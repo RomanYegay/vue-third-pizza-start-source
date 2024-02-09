@@ -35,3 +35,16 @@ services:
     volumes:
       - ./frontend:/frontend
       - /frontend/node_modules
+
+  template:
+    build:
+      context: ./template
+    command: sh -c "npm rebuild && npm start"
+    environment:
+      PORT: '9999'
+      HOST: '0.0.0.0'
+    ports:
+      - '9999:9999'
+    volumes:
+      - ./template:/template
+      - /template/node_modules
